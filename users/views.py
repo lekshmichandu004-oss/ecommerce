@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,14 +5,12 @@ from .serializers import RegisterSerializer, LoginSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 
-
 # Generate JWT Token
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
     return {
         'access': str(refresh.access_token),
     }
-
 
 # Register API
 class RegisterView(APIView):
@@ -34,9 +31,7 @@ class RegisterView(APIView):
             }, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# Login API
+#Login API
 class LoginView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
@@ -55,5 +50,11 @@ class LoginView(APIView):
             })
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#Test API
+from rest_framework.permissions import IsAuthenticated
 
-# Create your views here.
+class TestprotectedView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        return Response({'message': 'you are authenticated.'})
