@@ -10,7 +10,7 @@ class CartView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        cart = Cart.objects.get_or_create(user=request.user)
+        cart, _ = Cart.objects.get_or_create(user=request.user)
         serializer = CartSerializer(cart)
         return Response(serializer.data)
 
@@ -22,7 +22,7 @@ class AddToCartView(APIView):
         product_id = request.data.get('product_id')
         quantity = request.data.get('quantity', 1)
 
-        cart = Cart.objects.get(User=request.user)
+        cart, _ = Cart.objects.get_or_create(user=request.user)
         products = Product.objects.get(id=product_id)
 
         item,created = CartItem.objects.get_or_create(cart=cart, product=products)

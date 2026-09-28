@@ -1,0 +1,17 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/cart/add/
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"product_id\": 1,\r
+
+    \    \"quantity\" : 2\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwNjA2ODU1LCJpYXQiOjE3OTA2MDMyNTUsImp0aSI6Ijk2YmRhNjQzZWI5YjRiMjRhY2RhMGU5YjY4ZmFhZDNiIiwidXNlcl9pZCI6IjcifQ.fqhnUZx9mNX49lAuTaz49B1wMot8gLVluUOZBiCKhiM
+order: 4276665575207041

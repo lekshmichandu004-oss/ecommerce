@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/cart/7/
+method: DELETE
+order: 4438740515533792
